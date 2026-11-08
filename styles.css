@@ -1,0 +1,680 @@
+/* Team 4414 HighTide — 2026 Technical Binder Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:ital,wght@1,100;1,300;1,700;1,900&display=swap');
+
+:root {
+  /* Exact HighTide 2026 Palette */
+  --cream: #fbfaf6;
+  --cream-2: #f4f1e8;
+  --mint: #ecf3f0;
+  --ink: #1c2124;
+  --ink-2: #4a5258;
+  --ink-3: #8a9197;
+  --ink-4: #b7bcc1;
+  --rule: #e2dfd3;
+  --rule-strong: #cfcbb9;
+  --teal: #00b6ae;
+  --teal-deep: #009093;
+  --teal-darkest: #094a58;
+  --content-width: min(1280px, 92vw);
+  --content-wide: min(1760px, 94vw);
+  --reading-width: 720px;
+
+  /* Indicator variables for sliding pill */
+  --indicator-x: 4px;
+  --indicator-y: 4px;
+  --indicator-width: 0px;
+  --indicator-height: 0px;
+
+  /* Typography */
+  --font-title: Roboto, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, system-ui, Inter, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Dark mode toggle support preserving HighTide DNA */
+[data-theme="dark"] {
+  --cream: #0e1215;
+  --cream-2: #141b20;
+  --mint: #162428;
+  --ink: #f4f7f8;
+  --ink-2: #a5b0b8;
+  --ink-3: #6b7882;
+  --ink-4: #435059;
+  --rule: #202b33;
+  --rule-strong: #2c3c47;
+  --teal: #00e5dc;
+  --teal-deep: #00b6ae;
+  --teal-darkest: #094a58;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Background Atmosphere & Grid */
+#bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 182, 174, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 182, 174, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 50% 50%, black 45%, transparent 85%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ================= 1. NAVBAR (Exact https://2026.team4414.com/) ================= */
+.nav {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(251, 250, 246, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+[data-theme="dark"] .nav {
+  background: rgba(14, 18, 21, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--teal-darkest);
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .nav-brand {
+  color: var(--teal);
+}
+
+.nav-brand-mark {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 23px;
+  line-height: 1;
+  letter-spacing: .01em;
+}
+
+.nav-brand-thin {
+  font-weight: 300;
+}
+
+.nav-brand-bold {
+  font-weight: 900;
+}
+
+.nav-brand-divider {
+  width: 1px;
+  height: 18px;
+  background: currentColor;
+  opacity: .25;
+}
+
+.nav-brand-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  font-feature-settings: "tnum";
+}
+
+.nav-brand-year {
+  color: var(--teal-deep);
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.nav-center-specs {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 500;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.nav-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-spec-item strong {
+  font-weight: 700;
+  color: var(--teal-deep);
+}
+
+.nav-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Action button icons */
+.nav-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .nav-icon-btn {
+  background: rgba(20, 27, 32, 0.7);
+  border-color: var(--rule);
+  color: var(--ink-2);
+}
+
+.nav-icon-btn:hover {
+  color: var(--teal-deep);
+  border-color: var(--teal);
+  background: var(--cream);
+  transform: translateY(-1px);
+}
+
+.nav-icon-btn.is-active {
+  background: var(--mint);
+  border-color: var(--teal-deep);
+  color: var(--teal-deep);
+}
+
+.nav-icon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ================= 2. HERO STAGE (Exact Layout of 2026.team4414.com) ================= */
+.hero {
+  position: relative;
+  height: calc(100vh - 66px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px 24px;
+  text-align: center;
+  z-index: 10;
+  perspective: 1200px;
+}
+
+.hero-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.eyebrow {
+  font-size: clamp(11px, .85vw, 13px);
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 4px;
+}
+
+.hero h1 {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(48px, 5.5vw, 72px);
+  line-height: 1;
+  letter-spacing: .01em;
+  margin: 0;
+  color: var(--ink);
+}
+
+.hero h1 em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--teal-deep);
+}
+
+/* Center Stage Viewport */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-wide);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.hero-stage-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 64vh;
+  aspect-ratio: 16 / 10;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+.hero-stage-images {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.hero-stage-images img {
+  position: absolute;
+  max-width: 58%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .42s ease, transform .5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.12));
+}
+
+[data-theme="dark"] .hero-stage-images img {
+  filter: drop-shadow(0 20px 48px rgba(0, 0, 0, 0.55));
+}
+
+.hero-stage-images img.active {
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* ================= 3. SVG LEADER LINES (Exact https://2026.team4414.com/) ================= */
+.hero-stage-leaders {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 3;
+}
+
+.leader-line {
+  fill: none;
+  stroke: var(--ink-4);
+  stroke-width: 1;
+  opacity: .55;
+  transition: stroke .45s ease, opacity .45s ease, stroke-width .45s ease;
+}
+
+.leader-line.is-active {
+  stroke: var(--teal);
+  opacity: 1;
+  stroke-width: 1.5;
+}
+
+/* ================= 4. CALLOUTS (Exact https://2026.team4414.com/) ================= */
+.callout {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  color: var(--ink-4);
+  text-decoration: none;
+  transition: color .45s ease;
+  pointer-events: none;
+}
+
+.callout-label {
+  position: absolute;
+  left: var(--lx);
+  top: var(--ly);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 230px;
+  padding: 4px 14px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform .25s ease, color .3s ease;
+}
+
+.callout-left .callout-label {
+  transform: translate(-100%, -50%);
+  text-align: right;
+}
+
+.callout-right .callout-label {
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.callout-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.callout .callout-line {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: inherit;
+}
+
+.callout-dot {
+  position: absolute;
+  left: var(--dx);
+  top: var(--dy);
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: var(--cream);
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background .45s ease, transform .45s ease, border-color .45s ease;
+}
+
+.callout:hover,
+.callout.is-active {
+  color: var(--teal-deep);
+  outline: none;
+}
+
+.callout:hover .callout-dot,
+.callout.is-active .callout-dot {
+  background: var(--teal);
+  border-color: var(--teal);
+  transform: scale(1.3);
+  box-shadow: 0 0 12px var(--teal);
+}
+
+.callout:hover .callout-label,
+.callout.is-active .callout-label {
+  color: var(--ink);
+}
+
+/* ================= 5. FLOATING MECHANISM INSPECT CARD ================= */
+.subsystem-side-card {
+  position: absolute;
+  right: 48px;
+  bottom: 90px;
+  width: 320px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 20px;
+  z-index: 25;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+[data-theme="dark"] .subsystem-side-card {
+  background: rgba(20, 27, 32, 0.88);
+  border-color: var(--rule);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+.card-category-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.card-title {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.card-figure {
+  width: 100%;
+  height: 135px;
+  background: var(--mint);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.card-figure img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.card-desc {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.spec-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-item-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.spec-item-val {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal-deep);
+  font-feature-settings: "tnum";
+}
+
+/* ================= 6. CLOCK & TELEMETRY WIDGET ================= */
+.ambient-telemetry-corner {
+  position: absolute;
+  left: 48px;
+  bottom: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 25;
+  text-align: left;
+}
+
+.clock-digits {
+  font-family: var(--font-title);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.clock-digits span {
+  color: var(--teal-deep);
+  font-weight: 700;
+}
+
+.clock-date {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.telemetry-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--ink-2);
+  font-feature-settings: "tnum";
+}
+
+.telemetry-meta .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px var(--teal);
+}
+
+/* ================= 7. SLIDING PILLS SELECTOR ================= */
+.hero-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+}
+
+.subsystem-toggle-pills {
+  --indicator-x: 4px;
+  --indicator-y: 4px;
+  --indicator-width: 0px;
+  --indicator-height: 0px;
+  position: relative;
+  display: inline-flex;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px;
+  max-width: 100%;
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="dark"] .subsystem-toggle-pills {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--rule);
+}
+
+.pill-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--indicator-width);
+  height: var(--indicator-height);
+  border-radius: 999px;
+  background: var(--teal-deep);
+  transform: translate(var(--indicator-x), var(--indicator-y));
+  transition: transform .28s cubic-bezier(.16, .84, .24, 1), width .28s cubic-bezier(.16, .84, .24, 1), height .28s cubic-bezier(.16, .84, .24, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pill {
+  position: relative;
+  z-index: 1;
+  padding: 8px 18px;
+  border: none;
+  background: transparent;
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: clamp(11px, .8vw, 12px);
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color .2s ease;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  color: var(--ink);
+}
+
+.pill.active {
+  color: #fff;
+}
+
+/* Responsiveness */
+@media (max-width: 1350px) {
+  .subsystem-side-card { display: none; }
+}
+
+@media (max-width: 1100px) {
+  .ambient-telemetry-corner { display: none; }
+  .nav-center-specs { display: none; }
+}

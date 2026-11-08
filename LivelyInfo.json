@@ -1,0 +1,12 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "Team 4414 HighTide — RIPCURRENT 2K",
+  "Thumbnail": "assets/robot-full.webp",
+  "Preview": "assets/robot-full.webp",
+  "Desc": "High-tech interactive 2K desktop wallpaper featuring Team 4414 HighTide's 2026 robot RIPCURRENT with dynamic 3D parallax, subsystem CAD inspection, real-time clock and telemetry widgets.",
+  "Author": "Team 4414 / Antigravity",
+  "License": "MIT",
+  "Contact": "https://2026.team4414.com/",
+  "Type": 1,
+  "FileName": "index.html"
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4414 — 2026 Technical Binder | Interactive 2K Wallpaper</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:ital,wght@1,100;1,300;1,700;1,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background Canvas: Subtle ambient motion -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="blueprint-grid"></div>
+
+  <!-- 1. HighTide Nav Bar (Exact Design) -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand" id="brand-logo" title="HighTide — 2026 Technical Binder">
+        <span class="nav-brand-mark">
+          <span class="nav-brand-thin">HIGH</span><span class="nav-brand-bold">TIDE</span>
+        </span>
+        <span class="nav-brand-divider" aria-hidden="true"></span>
+        <span class="nav-brand-tag"><span class="nav-brand-year">2026</span> Binder</span>
+      </div>
+
+      <div class="nav-center-specs">
+        <div class="nav-spec-item">Swerve: <strong>25×32″ (7.67:1)</strong></div>
+        <div class="nav-spec-item">Flywheel: <strong>4× Kraken X44</strong></div>
+        <div class="nav-spec-item">Turret: <strong>55.7:1 (360°)</strong></div>
+        <div class="nav-spec-item">Agitator: <strong>Dye Rotor</strong></div>
+      </div>
+
+      <div class="nav-right-actions">
+        <button id="btn-orbit" class="nav-icon-btn is-active" title="Toggle Auto-Orbit Cinema Mode" aria-label="Auto Orbit">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-5.5-9L10 7.5v7L6.5 11zm11 2L14 16.5v-7l3.5 3.5z"/></svg>
+        </button>
+        <button id="btn-audio" class="nav-icon-btn" title="Toggle Sound FX" aria-label="Audio">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+        <button id="btn-theme" class="nav-icon-btn" title="Toggle Theme (Binder Cream / Dark)" aria-label="Theme">
+          <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+        </button>
+        <button id="btn-fullscreen" class="nav-icon-btn" title="Toggle Fullscreen (F11)" aria-label="Fullscreen">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. Hero Section (Exact 2026.team4414.com Architecture) -->
+  <section class="hero" id="hero-stage">
+    <div class="hero-head">
+      <div class="eyebrow">Team 4414 | HighTide</div>
+      <h1>RIPCURRENT</h1>
+    </div>
+
+    <!-- Center Interactive Stage -->
+    <div class="hero-stage">
+      <div class="hero-stage-inner" id="hero-stage-inner">
+        
+        <!-- Multi-layer CAD Stage Images -->
+        <div class="hero-stage-images">
+          <img class="active" src="assets/robot-full.webp" alt="Full robot assembly" data-key="full" />
+          <img src="assets/robot-turret.webp" alt="Turret" data-key="turret" />
+          <img src="assets/robot-shooter.webp" alt="Shooter" data-key="shooter" />
+          <img src="assets/robot-drivetrain.webp" alt="Drivetrain" data-key="drivetrain" />
+          <img src="assets/robot-dye-rotor.webp" alt="Dye Rotor" data-key="dye-rotor" />
+          <img src="assets/robot-bumpers.webp" alt="Bumpers" data-key="bumpers" />
+          <img src="assets/robot-intake.webp" alt="Intake" data-key="intake" />
+        </div>
+
+        <!-- SVG Leader Lines -->
+        <svg class="hero-stage-leaders" id="hero-stage-leaders" aria-hidden="true"></svg>
+
+        <!-- Exact Callouts from 2026.team4414.com -->
+        <a class="callout callout-right" data-key="turret" style="--lx: 78%; --ly: 22.7%; --dx: 59.5%; --dy: 29.4%;">
+          <span class="callout-label">
+            <span class="callout-title">Turret</span>
+            <span class="callout-line">55.7:1 reduction with a flex-wheel cable-chain tensioner.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+        <a class="callout callout-left" data-key="shooter" style="--lx: 26%; --ly: 20.8%; --dx: 50.5%; --dy: 39.0%;">
+          <span class="callout-label">
+            <span class="callout-title">Shooter</span>
+            <span class="callout-line">Four Kraken X44s on a 3″ flywheel.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+        <a class="callout callout-right" data-key="drivetrain" style="--lx: 78%; --ly: 73.1%; --dx: 57.4%; --dy: 62.5%;">
+          <span class="callout-label">
+            <span class="callout-title">Drivetrain</span>
+            <span class="callout-line">25×32″ swerve, geared 7.67:1 for lower current draw.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+        <a class="callout callout-right" data-key="dye-rotor" style="--lx: 78%; --ly: 42%; --dx: 54%; --dy: 48%;">
+          <span class="callout-label">
+            <span class="callout-title">Dye Rotor</span>
+            <span class="callout-line">Optimized for high BPS single stream shooting.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+        <a class="callout callout-left" data-key="bumpers" style="--lx: 26%; --ly: 47.9%; --dx: 41.8%; --dy: 53.8%;">
+          <span class="callout-label">
+            <span class="callout-title">Bumpers</span>
+            <span class="callout-line">Structural bumpers that double as hopper walls and shooter mount.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+        <a class="callout callout-left" data-key="intake" style="--lx: 26%; --ly: 80.8%; --dx: 41.2%; --dy: 78.1%;">
+          <span class="callout-label">
+            <span class="callout-title">Intake</span>
+            <span class="callout-line">Powered by 2 X60s and 1 X44 bottom bar.</span>
+          </span>
+          <span class="callout-dot"></span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Ambient Desktop Clock Widget -->
+    <div class="ambient-telemetry-corner">
+      <div class="clock-digits" id="clock-display">12:00<span>:00</span></div>
+      <div class="clock-date" id="date-display">MONDAY, NOV 9, 2026</div>
+      <div class="telemetry-meta">
+        <span class="dot"></span>
+        <span>BUS: <strong id="telemetry-volt" style="color:var(--teal-deep)">12.65V</strong></span>
+        <span>CAN: <strong id="telemetry-can" style="color:var(--teal-deep)">52%</strong></span>
+        <span>2560 × 1440 QHD</span>
+      </div>
+    </div>
+
+    <!-- Floating Subsystem Inspector Card -->
+    <aside class="subsystem-side-card" id="subsystem-card">
+      <span class="card-category-tag" id="card-category">FULL ROBOT ASSEMBLY</span>
+      <h3 class="card-title" id="card-title">RIPCURRENT</h3>
+      <div class="card-figure">
+        <img id="card-detail-img" src="assets/robot-full.webp" alt="Mechanism Detail" />
+      </div>
+      <p class="card-desc" id="card-desc">Team 4414 HighTide's 2026 championship robot.</p>
+      <div class="spec-list" id="card-specs"></div>
+    </aside>
+
+    <!-- 3. Exact Subsystem Toggle Pills Selector (with sliding indicator) -->
+    <footer class="hero-footer">
+      <div class="subsystem-toggle-pills" id="pills-container">
+        <span class="pill-indicator" id="pill-indicator"></span>
+        <button class="pill active" data-key="full">Full Robot</button>
+        <button class="pill" data-key="turret">Turret</button>
+        <button class="pill" data-key="shooter">Shooter</button>
+        <button class="pill" data-key="drivetrain">Drivetrain</button>
+        <button class="pill" data-key="dye-rotor">Dye Rotor</button>
+        <button class="pill" data-key="bumpers">Bumpers</button>
+        <button class="pill" data-key="intake">Intake</button>
+      </div>
+    </footer>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
